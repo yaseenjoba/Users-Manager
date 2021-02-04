@@ -1,0 +1,29 @@
+<table class="table table-dark">
+
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col">Status</th>
+        <th scope="col">CD</th>
+        <th scope="col">Action</th>
+    </tr>
+    <tr *ngFor="let user of users; let i= index;">
+        <td>
+            <img style="height:30px;width: 30px;" [src]="user.photo"> {{user.name}}
+        </td>
+        <td>{{user.email}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.status}}</td>
+        <td>{{user.creationDate}}</td>
+        <td>
+            <a type="button" (click)="edit()">edit</a>
+            <a type=" button " (click)=" removeUser(user) ">
+              clear
+            </a>
+
+        </td>
+
+    </tr>
+
+</table>
