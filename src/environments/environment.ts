@@ -7,6 +7,7 @@ export const environment = {
   firebase:{
     apiKey: "AIzaSyAlAr5xf-vFl9ANvtC_SKr6cGSfyBKB_ZE",
     authDomain: "usermanager-840bf.firebaseapp.com",
+    databaseURL: "https://usermanager-840bf-default-rtdb.firebaseio.com",
     projectId: "usermanager-840bf",
     storageBucket: "usermanager-840bf.appspot.com",
     messagingSenderId: "616094232935",

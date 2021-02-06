@@ -8,17 +8,18 @@
         <th scope="col">CD</th>
         <th scope="col">Action</th>
     </tr>
-    <tr *ngFor="let user of users; let i= index;">
+    <tr *ngFor="let user of users">
         <td>
             <img style="height:30px;width: 30px;" [src]="user.photo"> {{user.name}}
         </td>
+
         <td>{{user.email}}</td>
         <td>{{user.role}}</td>
         <td>{{user.status}}</td>
         <td>{{user.creationDate}}</td>
         <td>
-            <a type="button" (click)="edit()">edit</a>
-            <a type=" button " (click)=" removeUser(user) ">
+            <a type="button" (click)="edit(user)">edit </a>
+            <a type="button" (click)="removeUser(user.id)">
               clear
             </a>
 

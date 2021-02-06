@@ -1,6 +1,6 @@
+import { Router } from '@angular/router';
+import { UsreServiceService } from './../usre-service.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { debugPort } from 'process';
 
 @Component({
   selector: 'app-users',
@@ -9,21 +9,32 @@ import { debugPort } from 'process';
 })
 export class UsersComponent implements OnInit {
   users:any=[];
-
-  constructor(private db:AngularFireDatabase) {
-   db.list("/users").valueChanges().subscribe(user=>{
-     this.users=user;
-    console.log(this.users);
-   });
+  i=0;
+  constructor(private userService:UsreServiceService,private router:Router) {
 
   }
   ngOnInit(): void {
+    this.userService.getUsers().subscribe((data:any) =>{
+      this.users=data.map((e:any)=>{
+        return{
+          id:e.payload.doc.id,
+          name:e.payload.doc.data()['name'],
+          email:e.payload.doc.data()['email'],
+          photo:e.payload.doc.data()['photo'],
+          role:e.payload.doc.data()['role'],
+          status:e.payload.doc.data()['status'],
+          creationDate: e.payload.doc.data()['creationDate']
+        }
+      });
+    });
 
   }
   removeUser(value:any){
-    this.db.database.ref(`/users/${value}`).remove();
+   this.userService.removeUser(value);
   }
-  edit(){
-    
+  edit(user:any){
+    this.userService.send(user);
+    this.router.navigate(['edit'])
   }
 }
+

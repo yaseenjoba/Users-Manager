@@ -56,11 +56,10 @@
                     <div *ngIf="form.get('status')?.errors?.pattern || form.get('status')?.errors?.maxlength">Invalid Status</div>
                 </div>
             </div>
-            <button class="btn btn-primary" type="submit" [disabled]="!form.valid" (click)="addUser()" routerLink="/profile">Add</button>
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid" (click)="update()" routerLink="/profile">Edit</button>
             <div>
                 {{form.value|json}}
             </div>
-            <!-- <textarea [(ngModel)]="info" rows="10"></textarea> -->
         </form>
     </div>
     <div>

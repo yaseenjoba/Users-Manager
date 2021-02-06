@@ -1,3 +1,4 @@
+import { UsreServiceService } from './usre-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,8 +11,9 @@ import { AddUsersComponent } from './add-users/add-users.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-
+import { AngularFirestore,AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { EditUsersComponent } from './edit-users/edit-users.component';
 
 @NgModule({
   declarations: [
@@ -21,15 +23,19 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     UsersComponent,
     AboutComponent,
     AddUsersComponent,
+    EditUsersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    FormsModule,
+
   ],
-  providers: [],
+  providers: [UsreServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
