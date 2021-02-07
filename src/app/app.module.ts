@@ -14,6 +14,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore,AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { EditUsersComponent } from './edit-users/edit-users.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { EditUsersComponent } from './edit-users/edit-users.component';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     FormsModule,
+    Ng2SearchPipeModule
 
   ],
   providers: [UsreServiceService],

@@ -10,16 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   newUsers:any=[];
   users:any;
-  constructor(private router:Router,private userService:UsreServiceService) { }
+  userForSearch='';
 
-  ngOnInit(): void {
-  }
-  goAdd(){
-    this.router.navigate(["add"]);
-  }
-  is=false;
-  search(value:any){
-    console.log(value);
+  constructor(private router:Router,private userService:UsreServiceService) {
     this.userService.getUsers().subscribe((data:any) =>{
       this.users=data.map((e:any)=>{
         return{
@@ -32,13 +25,17 @@ export class HomeComponent implements OnInit {
           creationDate: e.payload.doc.data()['creationDate']
         }
       });
-      for(let i=0;i<this.users.length;i++){
-        if(this.users[i].name===value ||this.users[i].email===value ||this.users[i].photo===value||this.users[i].role===value||this.users[i].status===value){
-          this.newUsers.push(this.users[i]);
-        }
-      }
-      this.is=true;
     });
+}
+
+  ngOnInit(): void {
+  }
+  goAdd(){
+    this.router.navigate(["add"]);
+  }
+  search(value:any){
+    console.log(value);
+
 
   }
 }

@@ -22,8 +22,8 @@ export class AddUsersComponent implements OnInit {
     name:new FormControl(null, [Validators.required,Validators.pattern('^[a-zA-Z ]*$'),Validators.minLength(4)]),
     email:new FormControl(null,[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),Validators.minLength(4)]),
     photo:new FormControl(null,Validators.required),
-    role:new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z ]*$'),Validators.minLength(5)]),
-    status:new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z ]*$'),Validators.minLength(5)])
+    role:new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z ]*$'),Validators.minLength(3)]),
+    status:new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z ]*$'),Validators.minLength(3)])
 
   });
 
@@ -57,7 +57,7 @@ export class AddUsersComponent implements OnInit {
         photo:this.url,
         role:this.form.get('role')?.value,
         status:this.form.get('status')?.value,
-        creationDate: date.getDay()+" - "+ (date.getMonth()+1)+" - "+date.getFullYear()
+        creationDate: (date.getDay()+1)+" - "+ (date.getMonth()+1)+" - "+date.getFullYear()
       }
       this.userService.addUser(user);
       this.router.navigate(['users']);

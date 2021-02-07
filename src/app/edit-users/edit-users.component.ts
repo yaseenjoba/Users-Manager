@@ -44,7 +44,6 @@ export class EditUsersComponent implements OnInit {
   ngOnInit(): void {
     this.form.get('name')?.setValue(this.user.name);
     this.form.get('email')?.setValue(this.user.email);
-    this.form.get('photo')?.setValue(this.user.photo);
     this.form.get('role')?.setValue(this.user.role);
     this.form.get('status')?.setValue(this.user.status);
     this.form.updateOn;

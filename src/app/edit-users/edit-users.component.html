@@ -36,7 +36,11 @@
             </div>
             <div class="form-group">
                 <label>Role</label>
-                <input formControlName="role" class="form-control" type="text">
+                <select class="form-control" formControlName="role" class="form-control" type="text">
+              <option>User</option>
+              <option>Admin</option>
+              <option>Monitor</option>
+            </select>
                 <div class="alert alert-danger" *ngIf="form.get('role')?.invalid &&form.get('role')?.touched ">
                     <div *ngIf="form.get('role')?.errors?.required">
                         Role is required
@@ -44,10 +48,14 @@
                     <div *ngIf="form.get('role')?.errors?.minlength">Length Error</div>
                     <div *ngIf="form.get('role')?.errors?.pattern || form.get('role')?.errors?.maxlength">Invalid Role</div>
                 </div>
+
             </div>
             <div class="form-group">
                 <label>Status</label>
-                <input formControlName="status" class="form-control" type="text">
+                <select class="form-control" formControlName="status" class="form-control" type="text">
+              <option>Active</option>
+              <option>Offline</option>
+            </select>
                 <div class="alert alert-danger" *ngIf="form.get('status')?.invalid &&form.get('status')?.touched ">
                     <div *ngIf="form.get('status')?.errors?.required">
                         Status is required
@@ -55,11 +63,13 @@
                     <div *ngIf="form.get('status')?.errors?.minlength">Length Error</div>
                     <div *ngIf="form.get('status')?.errors?.pattern || form.get('status')?.errors?.maxlength">Invalid Status</div>
                 </div>
+
             </div>
-            <button class="btn btn-primary" type="submit" [disabled]="!form.valid" (click)="update()" routerLink="/profile">Edit</button>
-            <div>
-                {{form.value|json}}
-            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid" (click)="update()" routerLink="/profile">Add</button>
+            <!-- <div>
+            {{form.value|json}}
+        </div> -->
+            <!-- <textarea [(ngModel)]="info" rows="10"></textarea> -->
         </form>
     </div>
     <div>
