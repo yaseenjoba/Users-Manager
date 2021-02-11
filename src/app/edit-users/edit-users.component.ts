@@ -57,7 +57,7 @@ export class EditUsersComponent implements OnInit {
       photo:this.url,
       role:this.form.get('role')?.value,
       status:this.form.get('status')?.value,
-      creationDate: date.getDay()+" - "+ (date.getMonth()+1)+" - "+date.getFullYear()
+      creationDate: this.user.creationDate
     }
     this.userService.update(this.user.id,user);
     this.router.navigate(['users']);

@@ -57,7 +57,7 @@ export class AddUsersComponent implements OnInit {
         photo:this.url,
         role:this.form.get('role')?.value,
         status:this.form.get('status')?.value,
-        creationDate: (date.getDay()+1)+" - "+ (date.getMonth()+1)+" - "+date.getFullYear()
+        creationDate: (date.getDate())+" - "+ (date.getMonth()+1)+" - "+date.getFullYear()
       }
       this.userService.addUser(user);
       this.router.navigate(['users']);
