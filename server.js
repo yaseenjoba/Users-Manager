@@ -14,12 +14,3 @@ app.get('/*', function(req, res) {
 
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
-const gcloud = require('google-cloud')
-
-const storage = gcloud.storage({
-    projectId: 'usermanager-840bf',
-    keyFilename: 'service-account-credentials.json',
-});
-
-const bucket = storage.bucket('usermanager-840bf.appspot.com')
-var storage = require('@google-cloud/storage')
