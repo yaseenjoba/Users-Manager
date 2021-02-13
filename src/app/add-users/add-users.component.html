@@ -26,8 +26,8 @@
             <div class="form-group">
                 <label>Photo</label>
                 <div class="custom-file" style="overflow:hidden;">
-                    <input formControlName="photo" (change)="selectFile($event)" type="file" class="custom-file-input" id="customFile">
-                    <label class="custom-file-label" for="customFile"><span>{{url}}</span><span *ngIf="url!=''">Your Photo</span></label>
+                    <input formControlName="photo" type="file" accept=".jpeg,.jpg,.png,.svg" (change)="selectFile($event)" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile"><span>{{downloadableURL}}</span><span *ngIf="downloadableURL!=''">Your Photo</span></label>
                 </div>
                 <div class="alert alert-danger" *ngIf="form.get('photo')?.invalid &&form.get('photo')?.touched ">
                     <div *ngIf="form.get('photo')?.errors?.required">
@@ -74,7 +74,11 @@
         </form>
     </div>
     <div>
-        <div style="margin-right:50px; border: 2px solid;width: 500px; height: 400px; overflow: hidden; background-size: 100% 100%;;background-repeat: no-repeat;" [ngStyle]="{ 'background-image': 'url(' + url + ')'}">
+        <div style="margin-right:50px; border: 2px solid;width: 500px; height: 400px; overflow: hidden; background-size: 100% 100%;;background-repeat: no-repeat;" [ngStyle]="{ 'background-image': 'url(' + downloadableURL + ')'}">
+        </div>
+        <div *ngIf="progress | async as val">
+            <progress type="warning" [value]="val" style="height: 7mm; width: 50%" max="100"></progress>
+            <br />
+            <span *ngIf="true" style="color:rgb(255, 60, 0); font-size: 17px; font-weight: 410;">{{ val | number}}% </span><span *ngIf="val == 100" style="color:rgb(1, 153, 34);  font-size: 17px; font-weight: 410;">Completed !</span>
         </div>
     </div>
-</div>

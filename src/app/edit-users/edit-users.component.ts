@@ -1,3 +1,4 @@
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { UsreServiceService } from './../usre-service.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditUsersComponent implements OnInit {
 
-  constructor( private userService:UsreServiceService, private router:Router) {
+  constructor( private userService:UsreServiceService, private router:Router,private fireStorage: AngularFireStorage) {
     this.user=this.userService.receive();
   }
   form=new FormGroup({
@@ -21,24 +22,27 @@ export class EditUsersComponent implements OnInit {
     status:new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z ]*$'),Validators.minLength(5)])
 
   });
-  url:any;
-  selectFile(event:any){
-    if(!event.target.files[0] || event.target.files[0].length == 0) {
-			return;
-		}
+  basePath = '/images';
+  downloadableURL = '';
+  task: any;
+  async selectFile(event:any){
+    const file = event.target.files[0];
+   if (file) {
+      const filePath = `${this.basePath}/${file.name}`;  // path at which image will be stored in the firebase storage
+      this.task =  this.fireStorage.upload(filePath, file);    // upload task
 
-		var mimeType = event.target.files[0].type;
+      // this.progress = this.snapTask.percentageChanges();
 
-		if (mimeType.match(/image\/*/) == null) {
-			return;
-		}
 
-		var reader = new FileReader();
-		reader.readAsDataURL(event.target.files[0]);
+      (await this.task).ref.getDownloadURL().then((url:any) => {this.downloadableURL = url; console.log(url)});
 
-		reader.onload = (_event) => {
-			this.url = reader.result;
-		}
+
+
+    } else {
+      alert('No images selected');
+      this.downloadableURL = '';
+    }
+
   }
   user:any;
   ngOnInit(): void {
@@ -47,14 +51,14 @@ export class EditUsersComponent implements OnInit {
     this.form.get('role')?.setValue(this.user.role);
     this.form.get('status')?.setValue(this.user.status);
     this.form.updateOn;
-    this.url=this.user.photo;
+    this.downloadableURL=this.user.photo;
   }
   update(){
     let date = new Date();
     let user = {
       name:this.form.get('name')?.value,
       email:this.form.get('email')?.value,
-      photo:this.url,
+      photo:this.downloadableURL,
       role:this.form.get('role')?.value,
       status:this.form.get('status')?.value,
       creationDate: this.user.creationDate

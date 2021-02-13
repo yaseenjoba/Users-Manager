@@ -15,6 +15,7 @@ import { AngularFirestore,AngularFirestoreModule } from '@angular/fire/firestore
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { EditUsersComponent } from './edit-users/edit-users.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 
 @NgModule({
@@ -35,8 +36,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     FormsModule,
-    Ng2SearchPipeModule
-
+    Ng2SearchPipeModule,
+    AngularFireStorageModule
   ],
   providers: [UsreServiceService],
   bootstrap: [AppComponent]
