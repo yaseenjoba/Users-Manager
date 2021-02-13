@@ -79,6 +79,6 @@
         <div *ngIf="progress | async as val">
             <progress type="warning" [value]="val" style="height: 7mm; width: 50%" max="100"></progress>
             <br />
-            <span *ngIf="true" style="color:rgb(255, 60, 0); font-size: 17px; font-weight: 410;">{{ val | number}}% </span><span *ngIf="val == 100" style="color:rgb(1, 153, 34);  font-size: 17px; font-weight: 410;">Completed !</span>
+            <span *ngIf="true" style="color:rgb(255, 60, 0); font-size: 17px; font-weight: 410;">{{ val }}% </span><span *ngIf="val == 100" style="color:rgb(1, 153, 34);  font-size: 17px; font-weight: 410;">Completed !</span>
         </div>
     </div>

@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   newUsers:any=[];
   users:any;
   userForSearch='';
-
+  showSearchStatus=false;
   constructor(private router:Router,private userService:UsreServiceService) {
     this.userService.getUsers().subscribe((data:any) =>{
       this.users=data.map((e:any)=>{
@@ -35,7 +35,10 @@ export class HomeComponent implements OnInit {
   }
   search(value:any){
     console.log(value);
-
+  }
+  showSearch(){
+    this.showSearchStatus=!this.showSearchStatus;
+    console.log(this.showSearchStatus);
 
   }
 }

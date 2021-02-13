@@ -6,10 +6,15 @@
 
 .icon-btn {
     padding: 1px 15px 3px 2px;
-    border-radius: 25px;
-    font-size: 50px;
+    border-radius: 10px;
+    font-size: 20px;
 }
 
 .add {
     margin-bottom: 20px
+}
+
+.serach-button {
+    border-radius: 25px;
+    font-size: 20px;
 }

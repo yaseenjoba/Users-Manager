@@ -25,13 +25,14 @@ export class EditUsersComponent implements OnInit {
   basePath = '/images';
   downloadableURL = '';
   task: any;
+  progress:any;
   async selectFile(event:any){
     const file = event.target.files[0];
    if (file) {
       const filePath = `${this.basePath}/${file.name}`;  // path at which image will be stored in the firebase storage
       this.task =  this.fireStorage.upload(filePath, file);    // upload task
 
-      // this.progress = this.snapTask.percentageChanges();
+      this.progress = this.task.percentageChanges();
 
 
       (await this.task).ref.getDownloadURL().then((url:any) => {this.downloadableURL = url; console.log(url)});
@@ -65,5 +66,6 @@ export class EditUsersComponent implements OnInit {
     }
     this.userService.update(this.user.id,user);
     this.router.navigate(['users']);
+    
   }
 }
