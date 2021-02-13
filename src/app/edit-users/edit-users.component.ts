@@ -55,7 +55,6 @@ export class EditUsersComponent implements OnInit {
     this.downloadableURL=this.user.photo;
   }
   update(){
-    let date = new Date();
     let user = {
       name:this.form.get('name')?.value,
       email:this.form.get('email')?.value,
@@ -66,6 +65,5 @@ export class EditUsersComponent implements OnInit {
     }
     this.userService.update(this.user.id,user);
     this.router.navigate(['users']);
-    
   }
 }

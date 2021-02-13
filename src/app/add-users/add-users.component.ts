@@ -38,14 +38,8 @@ export class AddUsersComponent implements OnInit {
    if (file) {
       const filePath = `${this.basePath}/${file.name}`;  // path at which image will be stored in the firebase storage
       this.task =  this.fireStorage.upload(filePath, file);    // upload task
-
       this.progress = this.task.percentageChanges();
-
-
       (await this.task).ref.getDownloadURL().then((url:any) => {this.downloadableURL = url; console.log(url)});
-
-
-
     } else {
       alert('No images selected');
       this.downloadableURL = '';
