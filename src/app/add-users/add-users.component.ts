@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AngularFireStorage  } from '@angular/fire/storage';   //   import <<<<
-
+import 'firebase/storage';
 @Component({
   selector: 'app-add-users',
   templateUrl: './add-users.component.html',

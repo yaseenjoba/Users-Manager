@@ -11,7 +11,7 @@ import { AddUsersComponent } from './add-users/add-users.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestore,AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { EditUsersComponent } from './edit-users/edit-users.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -42,4 +42,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
   providers: [UsreServiceService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
